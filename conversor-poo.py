@@ -1,6 +1,8 @@
 # Código que converte número dado da forma numérica
 # para a forma extensa; input = 32 output = trinta e dois;
 
+import unittest
+
 class Numero(object):
 	def __init__(self, num):
 		self.num = str(num)	
@@ -53,23 +55,27 @@ class Numero(object):
 				self.monta_dezena() + ' e ' + self.monta_unidade()
 
 
+class test_conversor(unittest.TestCase):	
 
-t = Numero(21)
-y = Numero(50)
-z = Numero(4)
-o = Numero(0)
-a = Numero(100)
-b = Numero(104)
-c = Numero(152)
-d = Numero(170)
-e = Numero(999)
+	def test_unidades(self):
+		z = Numero(0)
+		t = Numero(4)
+		self.assertEqual(z.escrever(), 'zero')
+		self.assertEqual(t.escrever(), 'quatro')
 
-assert t.escrever() == 'vinte e um'
-assert y.escrever() == 'cinquenta'	
-assert z.escrever() == 'quatro'
-assert o.escrever() == 'zero'
-assert a.escrever() == 'cem'
-assert b.escrever() == 'cento e quatro'
-assert c.escrever() == 'cento e cinquenta e dois'
-assert d.escrever() == 'cento e setenta'
-assert e.escrever() == 'novecentos e noventa e nove'
+	def test_dezenas(self):
+		z = Numero(20)
+		t = Numero(43)
+		self.assertEqual(z.escrever(), 'vinte')
+		self.assertEqual(t.escrever(), 'quarenta e tres')
+
+	def test_centenas(self):
+		z = Numero(100)
+		t = Numero(230)
+		o = Numero(341)
+		self.assertEqual(z.escrever(), 'cem')
+		self.assertEqual(t.escrever(), 'duzentos e trinta')
+		self.assertEqual(o.escrever(), 'trezentos e quarenta e um')
+
+if __name__ == '__main__':
+	unittest.main()

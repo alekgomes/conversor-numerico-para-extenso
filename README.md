@@ -1,2 +1,5 @@
-# Conversor_poo.py
-Código para transformar um número da forma numérica para forma extensa.
+# Conversor 
+
+Certa vez eu vi, em um vídeo, um rapaz falando que o teste para conseguir um emprego foi escrever um conversor que recebesse um número na sua forma numérica e retornasse o número na forma extensa. Achei a proposta interessante e resolvi escrever minha solução para esse desafio.
+
+
