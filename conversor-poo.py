@@ -58,6 +58,9 @@ class Numero(object):
 			# Centena COM dezena SEM unidade
 			elif(self.num[-1] == '0'):
 				return self.monta_centena() + ' e ' + self.monta_dezena()
+			# Centa COM dezena ONZE
+			elif(self.num[-2] == '1'):
+				return self.monta_centena() + ' e ' + self.monta_dezena_2()
 			# Centana COM dezena e COM unidade
 			return self.monta_centena() + ' e ' + \
 				self.monta_dezena() + ' e ' + self.monta_unidade()
@@ -81,11 +84,15 @@ class test_conversor(unittest.TestCase):
 
 	def test_centenas(self):
 		z = Numero(100)
-		t = Numero(230)
-		o = Numero(341)
+		t = Numero(205)
+		o = Numero(330)
+		q = Numero(555)
+		a = Numero(418)
 		self.assertEqual(z.escrever(), 'cem')
-		self.assertEqual(t.escrever(), 'duzentos e trinta')
-		self.assertEqual(o.escrever(), 'trezentos e quarenta e um')
+		self.assertEqual(t.escrever(), 'duzentos e cinco')
+		self.assertEqual(o.escrever(), 'trezentos e trinta')
+		self.assertEqual(q.escrever(), 'quinhentos e cinquenta e cinco')
+		self.assertEqual(a.escrever(), 'quatrocentos e dezoito')
 
 if __name__ == '__main__':
 	unittest.main()
