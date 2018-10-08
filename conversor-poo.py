@@ -19,6 +19,11 @@ class Numero(object):
 		 '8':'oitenta', '9':'noventa'}
 		return dezenas[self.num[-2]] 
 
+	def monta_dezena_2(self):
+		dezenas = {'1':'onze', '2':'doze', '3':'treze', '4':'quatorze',\
+		'5':'quinze', '6':'dezesseis', '7':'dezesete', '8':'dezoito', '9':'dezenove'}
+		return dezenas[self.num[-1]]
+
 	def monta_centena(self):
 		centenas = {'1':'cento', '2':'duzentos', '3':'trezentos',
 			'4':'quatrocentos', '5':'quinhentos', '6':'seiscentos',
@@ -35,8 +40,11 @@ class Numero(object):
 		# Monta dezenas	
 		elif (self.n == 2):
 			# Dezenas COM unidades
-			if (self.num[-1] != '0'):
-				return self.monta_dezena() + ' e ' + self.monta_unidade()	
+			if (self.num[-1] != '0' and self.num[-2] != '1'):
+				return self.monta_dezena() + ' e ' + self.monta_unidade()
+			# Dezenas caso ONZE
+			elif(self.num[-2] == '1'):
+				return self.monta_dezena_2()
 			# Dezenas SEM unidades 
 			return self.monta_dezena()
 			# Monta centenas
@@ -66,8 +74,10 @@ class test_conversor(unittest.TestCase):
 	def test_dezenas(self):
 		z = Numero(20)
 		t = Numero(43)
+		o = Numero(18)
 		self.assertEqual(z.escrever(), 'vinte')
 		self.assertEqual(t.escrever(), 'quarenta e tres')
+		self.assertEqual(o.escrever(), 'dezoito')
 
 	def test_centenas(self):
 		z = Numero(100)
